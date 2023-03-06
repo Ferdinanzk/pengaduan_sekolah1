@@ -25,7 +25,7 @@
         <table  class=" table table-striped" >
         <form action="/listlapor">
                     <div class="input-group mb-3">
-                    <input class="form-control" type="text" placeholder="Search..." name="search" value="{{ request('search') }}">
+                    <input class="form-control" type="text" placeholder="Masukan Kode yang tadi sudah diberikan" name="search" value="{{ request('search') }}">
                     <button class="btn btn-success" type="submit">Search</button>
                   </div>
                   </form>

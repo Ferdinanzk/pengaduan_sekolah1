@@ -41,7 +41,7 @@ class LaporanController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nama'=>'required',
+            'siswa_id'=>'required',
             'ket_kategori'=>'required',
             'lokasi'=>'required',
             'keterangan'=>'required',
@@ -54,14 +54,17 @@ class LaporanController extends Controller
             $destinationPath = public_path('/image');
             $foto->move($destinationPath, $name);
 
+            $kode = time() . '-'. $request->get('siswa_id');
+
             Pelaporan::create([
-                'siswa_id'=>$request->get('nama'),
+                'siswa_id'=>$request->get('siswa_id'),
                 'kategori_id'=>$request->get('ket_kategori'),
                 'lokasi'=>$request->get('lokasi'),
                 'keterangan'=>$request->get('keterangan'),
                 'foto'=>$name,
+                'kode'=>$kode,
                 ]);
-                return redirect()->back()->with('message', 'Laporan berhasil ditambahkan');
+                return redirect()->back()->with('message', $kode);
     }
 
     /**

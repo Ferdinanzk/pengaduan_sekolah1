@@ -40,7 +40,10 @@
           <form class="form" action="{{route('laporan.store')}}" method="post" enctype="multipart/form-data">  
           @if(Session::has('message'))
       <div class="alert alert-success">
-          {{Session::get('message')}}</div>
+          Simpan Kode ini : <b>{{Session::get('message')}}</b>
+          untuk keperluan melihat keluluhan Anda.
+
+          </div>
       @endif
 
 
@@ -49,13 +52,13 @@
 
         <div class="col-md-12">
         <label for="inputNanme4" class="form-label">Pilih Nama</label>
-        <select name="nama" class="form-control @error('nama') is-invalid @enderror">
+        <select name="siswa_id" class="form-control @error('nama') is-invalid @enderror">
           <option value="">Pilih Siswa</option>
           @foreach(App\Models\Siswa::all() as $siswa)
           <option value="{{$siswa->id}}">{{$siswa->nama}}</option>
           @endforeach
           </select>
-          @error('nama')
+          @error('siswa_id')
           <strong>{{ $message }}</strong>
           @enderror
         </div>

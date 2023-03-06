@@ -17,7 +17,8 @@ class Pelaporan extends Model
       
         $query->when($filters['search'] ?? false, function($query, $search) {
           return $query->where('lokasi', 'like', '%' . $search . '%')
-                ->orWhere('keterangan', 'like', '%' . $search . '%');
+                ->orWhere('keterangan', 'like', '%' . $search . '%')
+                ->orWhere('kode', 'like', '%' . $search . '%');
         });
       }
 
